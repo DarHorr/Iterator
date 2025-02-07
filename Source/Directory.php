@@ -46,11 +46,6 @@ namespace Hoa\Iterator;
 class Directory extends \DirectoryIterator
 {
     /**
-     * SplFileInfo classname.
-     */
-    protected $_splFileInfoClass = null;
-
-    /**
      * Relative path.
      */
     protected $_relativePath     = null;
@@ -62,9 +57,11 @@ class Directory extends \DirectoryIterator
      * Please, see \DirectoryIterator::__construct() method.
      * We add the $splFileInfoClass parameter.
      */
-    public function __construct(string $path, string $splFileInfoClass = null)
+    public function __construct(string $path, /**
+     * SplFileInfo classname.
+     */
+    protected ?string $_splFileInfoClass = null)
     {
-        $this->_splFileInfoClass = $splFileInfoClass;
         parent::__construct($path);
         $this->setRelativePath($path);
 

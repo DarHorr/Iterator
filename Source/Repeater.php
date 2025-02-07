@@ -48,12 +48,12 @@ class Repeater implements Iterator
     /**
      * Current iterator.
      */
-    protected $_iterator = null;
+    protected iterable $_iterator;
 
     /**
      * Maximum repetition.
      */
-    protected $_n        = 1;
+    protected int $_n;
 
     /**
      * Current repetition.

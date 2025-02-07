@@ -60,9 +60,7 @@ class Demultiplexer extends Test\Unit\Suite
                 $multiple->attachIterator(clone $counter),
                 $demultiplexer = new LUT\Demultiplexer(
                     $multiple,
-                    function ($current) {
-                        return $current[0] * $current[1];
-                    }
+                    fn($current) => $current[0] * $current[1]
                 )
             )
             ->when($result = iterator_to_array($demultiplexer, false))
@@ -95,9 +93,7 @@ class Demultiplexer extends Test\Unit\Suite
                 $multiple->attachIterator(clone $counter, 'two'),
                 $demultiplexer = new LUT\Demultiplexer(
                     $multiple,
-                    function ($current) {
-                        return $current['one'] * $current['two'];
-                    }
+                    fn($current) => $current['one'] * $current['two']
                 )
             )
             ->when($result = iterator_to_array($demultiplexer, false))

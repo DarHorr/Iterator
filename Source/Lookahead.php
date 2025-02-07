@@ -46,11 +46,6 @@ namespace Hoa\Iterator;
 class Lookahead extends IteratorIterator implements Outer
 {
     /**
-     * Current iterator.
-     */
-    protected $_iterator = null;
-
-    /**
      * Current key.
      */
     protected $_key      = 0;
@@ -70,10 +65,11 @@ class Lookahead extends IteratorIterator implements Outer
     /**
      * Construct.
      */
-    public function __construct(iterable $iterator)
+    public function __construct(/**
+     * Current iterator.
+     */
+    protected iterable $_iterator)
     {
-        $this->_iterator = $iterator;
-
         return;
     }
 

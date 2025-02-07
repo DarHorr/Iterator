@@ -57,9 +57,7 @@ class CallbackFilter extends Test\Unit\Suite
                 $foobar = $this->getDummyIterator(),
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function ($value) {
-                        return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
-                    }
+                    fn($value) => false === in_array($value, ['a', 'e', 'i', 'o', 'u'])
                 )
             )
             ->when($result = iterator_to_array($filter))
@@ -119,9 +117,7 @@ class CallbackFilter extends Test\Unit\Suite
                 $foobar = $this->getDummyIterator(),
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function () {
-                        return false;
-                    }
+                    fn() => false
                 )
             )
             ->when($result = iterator_to_array($filter))
@@ -137,9 +133,7 @@ class CallbackFilter extends Test\Unit\Suite
                 $foobar = $this->getDummyIterator(),
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function () {
-                        return true;
-                    }
+                    fn() => true
                 )
             )
             ->when(
@@ -158,9 +152,7 @@ class CallbackFilter extends Test\Unit\Suite
                 $foobar = $this->getDummyRecursiveIterator(),
                 $filter = new LUT\Recursive\CallbackFilter(
                     $foobar,
-                    function ($value) {
-                        return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
-                    }
+                    fn($value) => false === in_array($value, ['a', 'e', 'i', 'o', 'u'])
                 ),
                 $iterator = new LUT\Recursive\Iterator($filter)
             )
@@ -181,9 +173,7 @@ class CallbackFilter extends Test\Unit\Suite
                 $foobar = $this->getDummyRecursiveIterator(),
                 $filter = new LUT\Recursive\CallbackFilter(
                     $foobar,
-                    function () {
-                        return false;
-                    }
+                    fn() => false
                 ),
                 $iterator = new LUT\Recursive\Iterator($filter)
             )
@@ -200,9 +190,7 @@ class CallbackFilter extends Test\Unit\Suite
                 $foobar = $this->getDummyRecursiveIterator(),
                 $filter = new LUT\Recursive\CallbackFilter(
                     $foobar,
-                    function () {
-                        return true;
-                    }
+                    fn() => true
                 ),
                 $foobarIterator = new LUT\Recursive\Iterator($foobar),
                 $filterIterator = new LUT\Recursive\Iterator($filter)

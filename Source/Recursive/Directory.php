@@ -53,7 +53,7 @@ class Directory extends \RecursiveDirectoryIterator
     /**
      * Relative path.
      */
-    protected $_relativePath     = null;
+    protected string $_relativePath;
 
 
 

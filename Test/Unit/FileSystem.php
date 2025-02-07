@@ -93,7 +93,7 @@ class FileSystem extends Test\Unit\Suite
                 $this->resolve('hoa://Test/Vfs/Root/f?type=file'),
                 $iterator = new LUT\FileSystem(
                     $root,
-                    LUT\FileSystem::CURRENT_AS_FILEINFO,
+                    LUT\FileSystem::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS,
                     $splFileInfo
                 ),
                 $result   = []

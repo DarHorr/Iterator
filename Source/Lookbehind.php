@@ -46,11 +46,6 @@ namespace Hoa\Iterator;
 class Lookbehind extends IteratorIterator implements Outer
 {
     /**
-     * Current iterator.
-     */
-    protected $_iterator        = null;
-
-    /**
      * Previous key.
      */
     protected $_previousKey     = -1;
@@ -65,10 +60,11 @@ class Lookbehind extends IteratorIterator implements Outer
     /**
      * Construct.
      */
-    public function __construct(iterable $iterator)
+    public function __construct(/**
+     * Current iterator.
+     */
+    protected iterable $_iterator)
     {
-        $this->_iterator = $iterator;
-
         return;
     }
 

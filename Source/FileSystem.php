@@ -46,21 +46,15 @@ namespace Hoa\Iterator;
 class FileSystem extends \FilesystemIterator
 {
     /**
-     * SplFileInfo classname.
-     */
-    protected $_splFileInfoClass = null;
-
-
-
-    /**
      * Constructor.
      * Please, see \FileSystemIterator::__construct() method.
      * We add the $splFileInfoClass parameter.
      */
-    public function __construct(string $path, int $flags = null, string $splFileInfoClass = null)
+    public function __construct(string $path, int $flags = null, /**
+     * SplFileInfo classname.
+     */
+    protected ?string $_splFileInfoClass = null)
     {
-        $this->_splFileInfoClass = $splFileInfoClass;
-
         if (null === $flags) {
             parent::__construct($path);
         } else {

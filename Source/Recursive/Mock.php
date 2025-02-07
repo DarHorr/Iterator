@@ -49,7 +49,7 @@ class Mock implements Recursive
     /**
      * Current iterator.
      */
-    protected $_iterator = null;
+    protected iterable $_iterator;
 
 
 

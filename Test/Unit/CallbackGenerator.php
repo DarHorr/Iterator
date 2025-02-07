@@ -54,9 +54,7 @@ class CallbackGenerator extends Test\Unit\Suite
     {
         $this
             ->given(
-                $iterator = new LUT\CallbackGenerator(function ($key) {
-                    return $key * 2;
-                }),
+                $iterator = new LUT\CallbackGenerator(fn($key) => $key * 2),
                 $limit = new LUT\Limit($iterator, 0, 5)
             )
             ->when($result = iterator_to_array($limit))

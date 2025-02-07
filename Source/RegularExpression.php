@@ -85,11 +85,6 @@ class RegularExpression extends Filter
     public const REPLACE      = 4;
 
     /**
-     * The regular expression to match.
-     */
-    protected $_regex     = null;
-
-    /**
      * Operation mode, see the \RegexIterator::setMode method for a list of
      * modes.
      */
@@ -118,6 +113,7 @@ class RegularExpression extends Filter
 
     /**
      * Replacement.
+     * @var null
      */
     public $replacement   = null;
 
@@ -128,14 +124,15 @@ class RegularExpression extends Filter
      */
     public function __construct(
         iterable $iterator,
-        string $regex,
+        /**
+         * The regular expression to match.
+         */
+        protected string $_regex,
         int $mode      = self::MATCH,
         int $flags     = 0,
         int $pregFlags = 0
     ) {
         parent::__construct($iterator);
-
-        $this->_regex = $regex;
         $this->setMode($mode);
         $this->setFlags($flags);
         $this->setPregFlags($pregFlags);
@@ -166,7 +163,7 @@ class RegularExpression extends Filter
             case self::MATCH:
                 $out = 0 !== preg_match(
                     $this->_regex,
-                    $subject,
+                    (string) $subject,
                     $matches,
                     $this->_pregFlags
                 );
@@ -177,7 +174,7 @@ class RegularExpression extends Filter
                 $this->_current = [];
                 $out            = 0 !== preg_match(
                     $this->_regex,
-                    $subject,
+                    (string) $subject,
                     $this->_current,
                     $this->_pregFlags
                 );
@@ -188,7 +185,7 @@ class RegularExpression extends Filter
                 $this->_current = [];
                 $out            = 0 < preg_match_all(
                     $this->_regex,
-                    $subject,
+                    (string) $subject,
                     $this->_current,
                     $this->_pregFlags
                 );
@@ -198,7 +195,7 @@ class RegularExpression extends Filter
             case self::SPLIT:
                 $this->_current = preg_split(
                     $this->_regex,
-                    $subject,
+                    (string) $subject,
                     null,
                     $this->_pregFlags
                 );
@@ -214,7 +211,7 @@ class RegularExpression extends Filter
                 $result              = preg_replace(
                     $this->_regex,
                     $this->replacement,
-                    $subject,
+                    (string) $subject,
                     -1,
                     $numberOfReplacement
                 );

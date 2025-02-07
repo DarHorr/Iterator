@@ -46,11 +46,6 @@ namespace Hoa\Iterator;
 class Counter implements Iterator
 {
     /**
-     * From (lower bound).
-     */
-    protected $_from = 0;
-
-    /**
      * Current key.
      */
     protected $_key  = 0;
@@ -61,14 +56,9 @@ class Counter implements Iterator
     protected $_i    = 0;
 
     /**
-     * To (upper bound).
-     */
-    protected $_to   = 0;
-
-    /**
      * Step.
      */
-    protected $_step = 0;
+    protected int $_step;
 
 
 
@@ -77,7 +67,13 @@ class Counter implements Iterator
      * Equivalent to:
      *     for($i = $from; $i < $to; $i += $step)
      */
-    public function __construct(int $from, int $to, int $step)
+    public function __construct(/**
+     * From (lower bound).
+     */
+    protected int $_from, /**
+     * To (upper bound).
+     */
+    protected int $_to, int $step)
     {
         if ($step <= 0) {
             throw new Exception(
@@ -86,9 +82,6 @@ class Counter implements Iterator
                 $step
             );
         }
-
-        $this->_from = $from;
-        $this->_to   = $to;
         $this->_step = $step;
 
         return;

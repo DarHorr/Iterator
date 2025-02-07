@@ -217,7 +217,7 @@ class Directory extends Test\Unit\Suite
                 $this->resolve('hoa://Test/Vfs/Root/B/c/f?type=file'),
                 $directory = new LUT\Recursive\Directory(
                     $root,
-                    LUT\FileSystem::CURRENT_AS_FILEINFO,
+                    LUT\FileSystem::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS,
                     $splFileInfo
                 ),
                 $iterator  = new LUT\Recursive\Iterator($directory),

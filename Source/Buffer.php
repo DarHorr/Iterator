@@ -56,28 +56,25 @@ class Buffer extends IteratorIterator implements Outer
     protected const BUFFER_VALUE = 1;
 
     /**
-     * Current iterator.
-     */
-    protected $_iterator   = null;
-
-    /**
      * Buffer.
      */
-    protected $_buffer     = null;
+    protected \SplDoublyLinkedList $_buffer;
 
     /**
      * Maximum buffer size.
      */
-    protected $_bufferSize = 1;
+    protected int $_bufferSize;
 
 
 
     /**
      * Construct.
      */
-    public function __construct(iterable $iterator, int $bufferSize)
+    public function __construct(/**
+     * Current iterator.
+     */
+    protected iterable $_iterator, int $bufferSize)
     {
-        $this->_iterator   = $iterator;
         $this->_bufferSize = max($bufferSize, 1);
         $this->_buffer     = new \SplDoublyLinkedList();
 

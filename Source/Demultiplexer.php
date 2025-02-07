@@ -49,7 +49,7 @@ class Demultiplexer implements Iterator
     /**
      * Current iterator.
      */
-    protected $_iterator = null;
+    protected iterable $_iterator;
 
     /**
      * Current computed value.
